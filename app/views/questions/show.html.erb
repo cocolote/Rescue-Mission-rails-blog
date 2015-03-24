@@ -1,0 +1,17 @@
+<div class='row title-show-container'>
+  <h3 class='small-8 columns title-show'><%= @question.title %></h3>
+
+  <div class='small-2 columns button tiny title-show'>
+    <%= link_to 'Edit Question', edit_question_path(@question.to_param), method: :get %>
+  </div>
+  <div class='small-1 column'></div>
+  <div class='small-1 column button tiny'>
+    <%= link_to 'Delete', question_path(@question.to_param), method: :delete %>
+  </div>
+</div>
+
+<fieldset>
+  <legend>description</legend>
+  <p><%= @question.description %></p>
+</fieldset>
+

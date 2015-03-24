@@ -1,0 +1,11 @@
+<h3>Users Questions</h3>
+
+<ul>
+<% @questions.each do |question| %>
+  <li>
+    <div class='row questions-container'>
+      <%= link_to question.title, question_path(question.to_param), method: :get %>
+    </div>
+  </li>
+<% end %>
+</ul>

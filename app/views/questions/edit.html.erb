@@ -1,0 +1,13 @@
+<fieldset>
+  <legend>Edit question</legend>
+
+  <%= render partial: "form", object: @question %>
+
+</fieldset>
+<div class='row'>
+  <div class='small-1 column button tiny'>
+    <%= link_to 'Delete', question_path(@question.to_param), method: :delete %>
+  </div>
+  <div class='small-11 columns'></div>
+</div>
+

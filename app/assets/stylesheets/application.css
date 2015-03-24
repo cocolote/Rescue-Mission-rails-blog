@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation
+ */
+
+ul {
+  list-style: none;
+}
+
+#nav-bar {
+  background-color: #000;
+  padding: 0;
+  margin: 0;
+}
+
+#nav-bar ul li {
+  display: inline-block;
+  border: 3px solid #000;
+  margin-left: 2em;
+  margin-right: 1em;
+}
+
+.nav-bar-links {
+  padding: 0;
+  margin: 0;
+}
+
+#nav-bar ul li h4 {
+  padding-bottom: 0.18em;
+}
+
+#nav-bar ul li:hover{
+  border-bottom: 3px solid #f00;
+}
+
+/* Flash notes */
+
+.alert-success {
+  background-color: #49A840;
+  color: #fff;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+.questions-container {
+  padding: 1em;
+  border-bottom: 1px solid #ccc;
+}
+
+.questions-container div {
+  margin: 0;
+  padding: 0;
+}
+
+.button a{
+  color: #fff;
+}
+
+.title-show {
+  display: inline-block;
+}
+
+#errors {
+  color: #f00;
+}
+
+#errors ul {
+  list-style: circle;
+}
