@@ -37,6 +37,8 @@ gem 'foundation-rails'
 gem 'factory_girl_rails'
 # Devise to generate the user with the OAuth created
 gem 'devise'
+# Edit text value of different elements in place
+# gem 'rest_in_place'
 ###########
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

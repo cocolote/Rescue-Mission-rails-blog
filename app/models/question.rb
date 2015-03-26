@@ -1,4 +1,7 @@
 class Question < ActiveRecord::Base
+  belongs_to :user
+  has_many :answers
+
   validates :title, uniqueness: { scope: :user_id }
 
   validates :title,
@@ -9,6 +12,6 @@ class Question < ActiveRecord::Base
     presence: true,
       length: { minimum: 150 }
 
-  validates :user_id,
+  validates :user,
     presence: true
 end

@@ -9,24 +9,26 @@
 <body>
   <div id='nav-bar'>
     <ul>
-      <li><h2 class='nav-bar-links'><%= link_to 'Rescue Mission', root_path, method: :get %></h1></li>
-      <li><h4 class='nav-bar-links'><%= link_to 'New question', new_question_path, method: :get %></h4></li>
-      <li><h4 class='nav-bar-links'><%= link_to 'Sign in', new_user_session_path, method: :get %></h4></li>
-      <li><h4 class='nav-bar-links'><%= link_to 'Sign up', new_user_registration_path, method: :get %></h4></li>
+      <li><h2 class='nav-bar-links'><%= link_to 'Rescue Mission', root_path %></h1></li>
+      <li><h5 class='nav-bar-links'><%= link_to 'New question', new_question_path %></h5></li>
+      <% if user_signed_in?%>
+        <li class='user-links'><h5 class='nav-bar-links'><%= link_to 'Log out', destroy_user_session_path, method: :delete %></h5></li>
+      <% else %>
+        <li class='user-links'><h5 class='nav-bar-links'><%= link_to 'Sign in', new_user_session_path %></h5></li>
+        <li class='user-links'><h5 class='nav-bar-links'><%= link_to 'Sign up', new_user_registration_path %></h5></li>
+      <% end %>
     </ul>
   </div>
 
 
 <div class='row'>
-  <div class="notice devise"><%= notice %></div>
-  <div class="alert devise"><%= alert %></div>
-
-<!--   <% if flash.any? %>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
+  <% if notice %>
+    <div class="notice devise"><%= notice %></div>
   <% end %>
- -->
+  <% if alert %>
+    <div class="alert devise"><%= alert %></div>
+  <% end %>
+
   <%= yield %>
 
 </div>

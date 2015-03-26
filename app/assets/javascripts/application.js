@@ -13,3 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function() {
+  $('.devise').delay(1500).fadeOut(600);
+});
+
+$(function() {
+  $('.edit a').on('click', function(e){
+    e.preventDefault();
+    var editForm = $(this).attr('name');
+    $('.edit').hide();
+    $('.delete').hide();
+    $('.' + editForm).fadeIn();
+  });
+});

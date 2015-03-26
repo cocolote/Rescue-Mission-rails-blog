@@ -2,7 +2,7 @@
 
 <ul>
 <% @questions.each do |question| %>
-  <li>
+  <li class='question-element'>
     <div class='row questions-container'>
       <%= link_to question.title, question_path(question.to_param), method: :get %>
     </div>

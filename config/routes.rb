@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   root 'questions#index'
   devise_for :users
-  resources :questions
+
+  resources :answers, only: [:update, :destroy]
+
+  resources :questions do
+   resources :answers, only: [:create]
+  end
+
+  # get '/question/:question_id/answer/:id/edit', to: 'questions#show', as: :edit_answer_custom
+  # delete '/question/:question_id/answer/:id', to: 'answers#destroy', as: :delete_answer_custom
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

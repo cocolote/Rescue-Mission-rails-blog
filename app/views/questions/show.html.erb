@@ -1,17 +1,79 @@
-<div class='row title-show-container'>
-  <h3 class='small-8 columns title-show'><%= @question.title %></h3>
+<% if @question.user == current_user %>
+    <div class='title-buttons'>
+      <%= link_to 'Edit Question', edit_question_path(@question.to_param), method: :get %>
+    </div>
+    <div class='title-buttons'>
+      <%= link_to 'Delete', question_path(@question.to_param), method: :delete %>
+    </div>
+<% end %>
 
-  <div class='small-2 columns button tiny title-show'>
-    <%= link_to 'Edit Question', edit_question_path(@question.to_param), method: :get %>
-  </div>
-  <div class='small-1 column'></div>
-  <div class='small-1 column button tiny'>
-    <%= link_to 'Delete', question_path(@question.to_param), method: :delete %>
-  </div>
-</div>
+<h3 id='question-title'><%= @question.title %></h3>
 
 <fieldset>
   <legend>description</legend>
   <p><%= @question.description %></p>
+</fieldset>
+
+<% if !@question.answers.empty? %>
+  <h4>Answer(s)</h4>
+  <% count = 0 %>
+  <% @question.answers.order(:created_at).each do |answer| %>
+    <fieldset>
+      <legend><%= answer.user.user_name %></legend>
+        <div class='answer-edit'>
+          <p><%= answer.body %></p>
+        </div>
+
+        <% if answer.user == current_user%>
+
+          <div>
+            <div class='answer-button edit'>
+              <%= link_to 'Edit', '#', name: "form-edit-#{count}" %>
+            </div>
+            <div class='answer-button delete'>
+              <%= link_to 'Delete', answer_path(answer), method: :delete %>
+            </div>
+          </div>
+
+          <div class='form-edit form-edit-<%= count %>'>
+          <%= form_for answer do |f| %>
+
+            <div class="field">
+              <%= f.text_area :body %>
+              <%= f.hidden_field :user_id, value: current_user.to_param %>
+              <%= f.hidden_field :question_id, value: @question.to_param %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </fieldset>
+    <% count += 1 %>
+  <% end %>
+<% end %>
+
+<fieldset>
+  <legend>New Answer</legend>
+  <% if @answer.errors.present? %>
+    <div id='errors'>
+      <ul>
+        <% @answer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for [@question, @answer] do |f| %>
+    <div class="field">
+      <%= f.text_area :body %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
 </fieldset>
 
