@@ -7,6 +7,7 @@
     </div>
 <% end %>
 
+<h6><%= "#{@question.user.user_name} | #{@question.created_at}" %></h6>
 <h3 id='question-title'><%= @question.title %></h3>
 
 <fieldset>

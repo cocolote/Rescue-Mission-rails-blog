@@ -4,7 +4,8 @@
 <% @questions.each do |question| %>
   <li class='question-element'>
     <div class='row questions-container'>
-      <%= link_to question.title, question_path(question.to_param), method: :get %>
+      <h4><%= link_to question.title, question_path(question.to_param), method: :get %></h4>
+      <p><%= "#{question.user.user_name} | Answers: #{question.answers.length} | Best answer by" %></p>
     </div>
   </li>
 <% end %>
