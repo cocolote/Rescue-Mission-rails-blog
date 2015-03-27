@@ -21,17 +21,17 @@
   <% @question.answers.order(:created_at).each do |answer| %>
     <fieldset>
       <legend><%= answer.user.user_name %></legend>
-        <div class='answer-edit'>
+        <div class='answer-edit answer-<%= count %>'>
           <p><%= markdown.render(answer.body).html_safe %></p>
         </div>
 
         <% if answer.user == current_user%>
 
           <div>
-            <div class='answer-button edit'>
-              <%= link_to 'Edit', '#', name: "form-edit-#{count}" %>
+            <div class='answer-button edit edit-<%= count %>'>
+              <%= link_to 'Edit', '#', name: count %>
             </div>
-            <div class='answer-button delete'>
+            <div class='answer-button delete-<%= count %>'>
               <%= link_to 'Delete', answer_path(answer), method: :delete %>
             </div>
           </div>
@@ -45,8 +45,8 @@
 
             <div class="actions">
               <%= f.submit %>
-              <div class='answer-button cancel' name='form-edit-<%= count %>'>
-               <%= link_to 'Cancel', '#' %>
+              <div class='answer-button cancel'>
+               <%= link_to 'Cancel', '#', name: count %>
               </div>
             </div>
           </div>

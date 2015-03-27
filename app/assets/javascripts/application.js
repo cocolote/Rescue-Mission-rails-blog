@@ -21,19 +21,21 @@ $(function() {
 $(function() {
   $('.edit a').on('click', function(e){
     e.preventDefault();
-    var editForm = $(this).attr('name');
-    $('.edit').hide();
-    $('.delete').hide();
-    $('.' + editForm).fadeIn();
+    var number = $(this).attr('name');
+    $('.edit-' + number).hide();
+    $('.delete-' + number).hide();
+    $('.answer-' + number).hide();
+    $('.form-edit-' + number).fadeIn();
   });
 });
 
 $(function() {
-  $('.cancel').on('click', function(e){
+  $('.cancel a').on('click', function(e){
     e.preventDefault();
-    var editForm = $(this).attr('name');
-    $('.' + editForm).fadeOut();
-    $('.delete').fadeIn();
-    $('.edit').fadeIn();
+    var number = $(this).attr('name');
+    $('.form-edit-' + number).fadeOut();
+    $('.delete-' + number).fadeIn();
+    $('.edit-' + number).fadeIn();
+    $('.answer-' + number).fadeIn();
   });
 });
