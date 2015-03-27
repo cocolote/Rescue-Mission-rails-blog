@@ -27,3 +27,13 @@ $(function() {
     $('.' + editForm).fadeIn();
   });
 });
+
+$(function() {
+  $('.cancel').on('click', function(e){
+    e.preventDefault();
+    var editForm = $(this).attr('name');
+    $('.' + editForm).fadeOut();
+    $('.delete').fadeIn();
+    $('.edit').fadeIn();
+  });
+});

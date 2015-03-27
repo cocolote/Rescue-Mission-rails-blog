@@ -11,7 +11,7 @@
 
 <fieldset>
   <legend>description</legend>
-  <p><%= @question.description %></p>
+  <p><%= markdown.render(@question.description).html_safe %></p>
 </fieldset>
 
 <% if !@question.answers.empty? %>
@@ -21,7 +21,7 @@
     <fieldset>
       <legend><%= answer.user.user_name %></legend>
         <div class='answer-edit'>
-          <p><%= answer.body %></p>
+          <p><%= markdown.render(answer.body).html_safe %></p>
         </div>
 
         <% if answer.user == current_user%>
@@ -40,12 +40,13 @@
 
             <div class="field">
               <%= f.text_area :body %>
-              <%= f.hidden_field :user_id, value: current_user.to_param %>
-              <%= f.hidden_field :question_id, value: @question.to_param %>
             </div>
 
             <div class="actions">
               <%= f.submit %>
+              <div class='answer-button cancel' name='form-edit-<%= count %>'>
+               <%= link_to 'Cancel', '#' %>
+              </div>
             </div>
           </div>
         <% end %>
